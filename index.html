@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hot Games Tutorial Hub</title>
+  <meta name="description" content="Discover and manage tutorials for the hottest current and upcoming games. Browse articles, videos, images, and step-by-step guides by genre, platform, and release date." />
+  <meta name="keywords" content="game tutorials, steam guides, youtube game tutorials, twitch tips, 2026 games" />
+  <meta property="og:title" content="Hot Games Tutorial Hub" />
+  <meta property="og:description" content="Search and filter top game tutorial content by genre, platform, and release timeline." />
+  <meta property="og:type" content="website" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header class="site-header">
+    <div>
+      <h1>🔥 Hot Games Tutorial Hub</h1>
+      <p>Aggregated tutorials for trending and upcoming games (including 2026 titles)</p>
+    </div>
+    <button id="openCmsBtn" class="btn secondary">Open CMS</button>
+  </header>
+
+  <main>
+    <section class="controls card">
+      <h2>Find Tutorials Fast</h2>
+      <div class="control-grid">
+        <label>
+          Search keyword / game
+          <input id="searchInput" type="search" placeholder="e.g. Elden Ring, beginner build, boss guide" />
+        </label>
+
+        <label>
+          Genre
+          <select id="genreFilter">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label>
+          Platform
+          <select id="platformFilter">
+            <option value="">All</option>
+          </select>
+        </label>
+
+        <label>
+          Release Window
+          <select id="releaseFilter">
+            <option value="">All</option>
+            <option value="current">Current Hits</option>
+            <option value="future">Upcoming (2026+)</option>
+          </select>
+        </label>
+
+        <label>
+          Content Type
+          <select id="typeFilter">
+            <option value="">All</option>
+            <option value="article">Article</option>
+            <option value="video">Video</option>
+            <option value="image">Image</option>
+            <option value="instructions">Detailed Instructions</option>
+          </select>
+        </label>
+      </div>
+    </section>
+
+    <section class="api-section card">
+      <h2>Live Aggregation Integrations</h2>
+      <p>Connect APIs from YouTube, Twitch, and Steam by adding keys in <code>app.js</code>. The sample cards below are fallback demo data.</p>
+      <div id="apiStatus" class="status">Checking integrations…</div>
+    </section>
+
+    <section>
+      <h2>Aggregated Tutorial Content</h2>
+      <div id="contentGrid" class="content-grid"></div>
+      <p id="emptyState" class="hidden">No matching tutorials found. Try another keyword or filter.</p>
+    </section>
+  </main>
+
+  <aside id="cmsPanel" class="cms-panel hidden" aria-label="CMS panel">
+    <div class="cms-header">
+      <h2>Content Management</h2>
+      <button id="closeCmsBtn" class="btn secondary">Close</button>
+    </div>
+    <p>Add, edit, and remove tutorials for editorial workflows.</p>
+
+    <form id="cmsForm" class="cms-form">
+      <input type="hidden" id="contentId" />
+      <label>Game <input id="gameInput" required /></label>
+      <label>Title <input id="titleInput" required /></label>
+      <label>Type
+        <select id="contentTypeInput" required>
+          <option value="article">Article</option>
+          <option value="video">Video</option>
+          <option value="image">Image</option>
+          <option value="instructions">Detailed Instructions</option>
+        </select>
+      </label>
+      <label>Genre <input id="genreInput" required placeholder="RPG, FPS, MOBA..." /></label>
+      <label>Platform <input id="platformInput" required placeholder="PC / Console / Mobile" /></label>
+      <label>Release Date <input id="releaseInput" type="date" required /></label>
+      <label>Source URL <input id="urlInput" type="url" required /></label>
+      <label>Description <textarea id="descriptionInput" rows="3" required></textarea></label>
+      <div class="cms-actions">
+        <button type="submit" class="btn">Save</button>
+        <button id="resetBtn" type="button" class="btn secondary">Reset</button>
+      </div>
+    </form>
+  </aside>
+
+  <script src="app.js" defer></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);} // eslint-disable-line no-unused-vars
+    gtag('js', new Date());
+    gtag('config', 'G-XXXXXXXXXX');
+  </script>
+</body>
+</html>
